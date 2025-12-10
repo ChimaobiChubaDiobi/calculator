@@ -1,0 +1,316 @@
+/* Theme 1 - Default (Dark Blue) */
+:root {
+  --main-bg: #3b4664;
+  --toggle-bg: #252d44;
+  --screen-bg: #181f32;
+  --keypad-bg: #252d44;
+
+  --key-blue-bg: #647299;
+  --key-blue-shadow: #414e71;
+
+  --key-red-bg: #d13f30;
+  --key-red-shadow: #93261a;
+
+  --key-light-bg: #eae3db;
+  --key-light-shadow: #b4a597;
+
+  --text-dark: #454d5e;
+  --text-white: #ffffff;
+  --text-display: #ffffff;
+  --text-heading: #ffffff;
+}
+
+/* Theme 2 - Light */
+body[data-theme="2"] {
+  --main-bg: #e6e6e6;
+  --toggle-bg: #d3cdcd;
+  --screen-bg: #eeeeee;
+  --keypad-bg: #d3cdcd;
+
+  --key-blue-bg: #388187;
+  --key-blue-shadow: #1c6066;
+
+  --key-red-bg: #ca5502;
+  --key-red-shadow: #893901;
+
+  --key-light-bg: #e5e4e0;
+  --key-light-shadow: #a79e91;
+
+  --text-dark: #3a3a3a;
+  --text-white: #ffffff;
+  --text-display: #3a3a3a;
+  --text-heading: #3a3a3a;
+}
+
+/* Theme 3 - Dark Purple */
+body[data-theme="3"] {
+  --main-bg: #17062a;
+  --toggle-bg: #1e0936;
+  --screen-bg: #1e0936;
+  --keypad-bg: #1e0936;
+
+  --key-blue-bg: #56077c;
+  --key-blue-shadow: #be15f4;
+
+  --key-red-bg: #00ded0;
+  --key-red-shadow: #6ff9f1;
+
+  --key-light-bg: #331c4d;
+  --key-light-shadow: #881c9e;
+
+  --text-dark: #ffe53d;
+  --text-white: #ffffff;
+  --text-display: #ffe53d;
+  --text-heading: #ffe53d;
+}
+
+body {
+  background-color: var(--main-bg);
+  color: var(--text-white);
+  font-family: 'Spartan', sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  margin: 0;
+  transition: background-color 0.3s ease;
+}
+
+.container {
+  width: 100%;
+  max-width: 500px;
+  padding: 24px;
+}
+
+/* Header */
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+nav h1 {
+  font-size: 32px;
+  margin: 0;
+  color: var(--text-heading);
+}
+
+.theme {
+  display: flex;
+  align-items: center;
+  font-size: 12px;
+  letter-spacing: 1px;
+}
+
+.theme p {
+  margin-right: 20px;
+  align-self: flex-end;
+  margin-bottom: 5px;
+  color: var(--text-heading);
+}
+
+.theme-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.theme-numbers {
+  display: flex;
+  justify-content: space-around;
+  width: 70px;
+  font-size: 12px;
+  margin-bottom: 5px;
+  color: var(--text-heading);
+}
+
+.theme-numbers span {
+  flex: 1;
+  text-align: center;
+}
+
+.theme_indicators {
+  background: var(--toggle-bg);
+  padding: 5px;
+  border-radius: 20px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 70px;
+  height: 26px;
+  position: relative;
+  cursor: pointer;
+}
+
+.indicator {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  cursor: pointer;
+  position: relative;
+  z-index: 2;
+  background: transparent;
+}
+
+#bar {
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  background: var(--key-red-bg);
+  border-radius: 50%;
+  transition: all 0.3s ease;
+  left: 8px;
+  z-index: 1;
+}
+
+/* Screen */
+.screen-wrapper {
+  position: relative;
+}
+
+.screen {
+  background-color: var(--screen-bg);
+  padding: 30px;
+  border-radius: 10px 10px 0 0;
+  text-align: right;
+  min-height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.calc-display {
+  font-size: 48px;
+  font-weight: 700;
+  overflow: hidden;
+  color: var(--text-display);
+  min-height: 60px;
+}
+
+.calc-display:empty::after {
+  content: '|';
+  animation: blink 1s infinite;
+}
+
+@keyframes blink {
+
+  0%,
+  50% {
+    opacity: 1;
+  }
+
+  51%,
+  100% {
+    opacity: 0;
+  }
+}
+
+.history-toggle {
+  background-color: var(--screen-bg);
+  text-align: center;
+  padding: 8px;
+  cursor: pointer;
+  border-radius: 0 0 10px 10px;
+  transition: all 0.3s ease;
+}
+
+.history-toggle:hover {
+  opacity: 0.8;
+}
+
+.history-toggle .arrow {
+  color: var(--text-display);
+  font-size: 12px;
+  transition: transform 0.3s ease;
+  display: inline-block;
+}
+
+.history-toggle.open .arrow {
+  transform: rotate(180deg);
+}
+
+.calc-history {
+  background-color: var(--screen-bg);
+  padding: 15px 30px;
+  font-size: 14px;
+  color: var(--text-display);
+  opacity: 0.8;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease, padding 0.3s ease;
+  border-radius: 0 0 10px 10px;
+  margin-top: -10px;
+}
+
+.calc-history.show {
+  max-height: 150px;
+  padding: 15px 30px;
+  margin-bottom: 24px;
+}
+
+.calc-history div {
+  margin: 5px 0;
+  text-align: right;
+}
+
+.hide {
+  display: none;
+}
+
+/* Keypad */
+.calc-buttons {
+  background-color: var(--keypad-bg);
+  padding: 24px;
+  border-radius: 10px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+button {
+  border: none;
+  border-radius: 8px;
+  padding: 15px 0;
+  font-size: 32px;
+  font-weight: 700;
+  font-family: inherit;
+  cursor: pointer;
+  transition: opacity 0.2s;
+  padding-top: 20px;
+}
+
+button:active {
+  transform: translateY(2px);
+}
+
+/* Key Types */
+.calc_num,
+.calc_operator {
+  background-color: var(--key-light-bg);
+  color: var(--text-dark);
+  box-shadow: 0 4px var(--key-light-shadow);
+}
+
+.skey {
+  /* DEL, RESET */
+  background-color: var(--key-blue-bg);
+  color: var(--text-white);
+  box-shadow: 0 4px var(--key-blue-shadow);
+  font-size: 20px;
+}
+
+.ekey {
+  /* EQUAL */
+  background-color: var(--key-red-bg);
+  color: var(--text-white);
+  box-shadow: 0 4px var(--key-red-shadow);
+}
+
+.full {
+  grid-column: span 2;
+}
+
+.hide {
+  display: none;
+}

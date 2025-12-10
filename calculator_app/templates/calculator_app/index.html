@@ -1,0 +1,73 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Frontend Mentor | Calculator app</title>
+    <link rel="stylesheet" href="{% static 'calculator_app/calc.css' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Spartan:wght@700&display=swap" rel="stylesheet">
+</head>
+
+<body class="mainbg">
+    <div class="container">
+        <nav class="txt">
+            <h1>calc</h1>
+            <div class="theme">
+                <p>THEME</p>
+                <div class="theme-container">
+                    <div class="theme-numbers">
+                        <span>1</span>
+                        <span>2</span>
+                        <span>3</span>
+                    </div>
+                    <div class="theme_indicators">
+                        <span id="indicator1" class="indicator padbg" data-value="1"></span>
+                        <span id="indicator2" class="indicator padbg" data-value="2"></span>
+                        <span id="indicator3" class="indicator padbg" data-value="3"></span>
+                        <span id="bar" class="selected ekey"></span>
+                    </div>
+                </div>
+            </div>
+        </nav>
+        <div class="calc-container">
+            <div class="screen-wrapper">
+                <div class="screen">
+                    <div class="calc-display txt"></div>
+                </div>
+                <div class="history-toggle" id="history_toggle">
+                    <span class="arrow">▼</span>
+                </div>
+                <div id="calc_history" class="calc-history txt hide"></div>
+            </div>
+            <div class="calc-buttons padbg">
+                <button class="calc_num">7</button>
+                <button class="calc_num">8</button>
+                <button class="calc_num">9</button>
+                <button class="skey" id="del_btn">DEL</button>
+
+                <button class="calc_num">4</button>
+                <button class="calc_num">5</button>
+                <button class="calc_num">6</button>
+                <button class="calc_operator">+</button>
+
+                <button class="calc_num">1</button>
+                <button class="calc_num">2</button>
+                <button class="calc_num">3</button>
+                <button class="calc_operator">-</button>
+
+                <button class="calc_num">.</button>
+                <button class="calc_num">0</button>
+                <button class="calc_operator">/</button>
+                <button class="calc_operator">x</button>
+
+                <button class="skey full" id="reset_btn">RESET</button>
+                <button class="ekey full" id="equal_btn">=</button>
+            </div>
+        </div>
+    </div>
+    <script src="{% static 'calculator_app/theme.js' %}"></script>
+</body>
+
+</html>
