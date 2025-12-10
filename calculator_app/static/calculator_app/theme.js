@@ -153,7 +153,7 @@ document.addEventListener('DOMContentLoaded', () => {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/x-www-form-urlencoded',
-                'X-CSRFToken': getCookie('csrftoken')
+                'X-CSRFToken': getCSRFToken()
             },
             body: `expression=${encodeURIComponent(currentInput)}`
         })
@@ -202,5 +202,15 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
         return cookieValue;
+    }
+
+    function getCSRFToken() {
+        // Try to get from hidden input first (most reliable)
+        const csrfInput = document.querySelector('[name="csrfmiddlewaretoken"]');
+        if (csrfInput) {
+            return csrfInput.value;
+        }
+        // Fallback to cookie
+        return getCookie('csrftoken');
     }
 });
